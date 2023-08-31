@@ -7,7 +7,8 @@ module.exports = {
 
   // O ponto de entrada da aplicação
   entry: {
-    index: path.resolve(__dirname, 'src/views','tela-inicio', 'tela-inicio.ts')
+    index: path.resolve(__dirname, 'src/views','tela-inicio', 'tela-inicio.ts'),
+    detalhes: path.resolve(__dirname, 'src/views','pokemon-detalhes', 'pokemon-detalhes.ts')
   },
 
   // Configuração de output do build
@@ -44,6 +45,11 @@ module.exports = {
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/views','tela-inicio', 'tela-inicio.html'),
       chunks: ['index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'pokemon-detalhes.html',
+      template: path.resolve(__dirname, 'src/views','pokemon-detalhes', 'pokemon-detalhes.html'),
+      chunks: ['detalhes']
     }),
 
     new CopyWebpackPlugin({
