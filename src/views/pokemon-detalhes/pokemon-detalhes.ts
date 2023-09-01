@@ -59,7 +59,7 @@ class PokemonDetalhes{
         }
 
         private redirecionarUsuario(): any {
-            window.location.href = '/Pokedex.Web';
+            window.location.href.replace(window.location.href,'https://rafatavres.github.io/Pokedex.Web/');
         }
 
         private pesquisarPokemonPorNome(nome: string) : void{
