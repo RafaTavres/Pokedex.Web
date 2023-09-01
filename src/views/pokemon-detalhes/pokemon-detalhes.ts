@@ -37,7 +37,7 @@ class PokemonDetalhes{
 
         registrarEventos(): void{
             this.formPrincipal.addEventListener('submit', (e) => this.buscar(e));
-            this.btnLimpar.addEventListener('click', () => this.limparCard());
+            this.btnLimpar.addEventListener('click', () => this.Reiniciar());
         }
 
         buscar(sender: Event):void{
@@ -51,9 +51,16 @@ class PokemonDetalhes{
         }
 
         limparCard(){
-            this.pnlConteudo.querySelector(".card-pokemon")?.remove();
+            this.pnlConteudo.querySelector('.card-pokemon')
+            ?.remove();
+        }
+        Reiniciar(){
+            this.redirecionarUsuario();
         }
 
+        private redirecionarUsuario(): any {
+            window.location.href = '/';
+        }
 
         private pesquisarPokemonPorNome(nome: string) : void{
             this.pokemonService.selecionarPokemonPorNome(nome)
@@ -71,6 +78,8 @@ class PokemonDetalhes{
 
             const lblTipoDePokemonNormal = document.createElement("p");
             const lblTipoDePokemonShiny = document.createElement("p");
+            let lblMovimentos = document.createElement("p");
+            
 
             lblId.textContent = pokemon.id.toString();
             lblNome.textContent = pokemon.nome.toUpperCase();
@@ -78,20 +87,23 @@ class PokemonDetalhes{
             imgSpriteShiny.src = pokemon.spriteUrlShiny;
             lblTipoDePokemonNormal.textContent = 'Normal';
             lblTipoDePokemonShiny.textContent = 'Shiny';
+                                
 
             const pnlPokemon = document.createElement("div");
             pnlPokemon.classList.add('card-pokemon');
 
+                    
+             
             pnlPokemon.appendChild(lblId);
             pnlPokemon.appendChild(lblNome);
             pnlPokemon.appendChild(lblTipoDePokemonNormal);
             pnlPokemon.appendChild(imgSprite);
             pnlPokemon.appendChild(lblTipoDePokemonShiny);
             pnlPokemon.appendChild(imgSpriteShiny);
+            pnlPokemon.appendChild(lblMovimentos);   
 
             this.pnlConteudo.appendChild(pnlPokemon);
         }
-
 
         private exibirNotificacao(error: Error): void{
             const notificacao = document.createElement('div');
@@ -111,48 +123,5 @@ class PokemonDetalhes{
             //     document.body.appendChild(notificacao);
             // }, 1000);
         }
-
-        private gerarGridPokemons(pokemons: Pokemon[]): any {
-           const pnlGrid = document.createElement('div');
-
-           pnlGrid.classList.add('grid-pokemons');
-
-           for(let pokemon of pokemons){
-                const card = this.obterCard(pokemon);
-                pnlGrid.appendChild(card);
-           }
-           this.pnlConteudo.appendChild(pnlGrid);
-        }
-
-        private obterCard(pokemon: Pokemon) {
-           const id = document.createElement("p");
-            const imagem = document.createElement("img");
-            const nomePokemon = document.createElement("p");
-            const imgSpriteShiny = document.createElement("img");
-
-            const lblTipoDePokemonNormal = document.createElement("p");
-            const lblTipoDePokemonShiny = document.createElement("p");
-
-            id.textContent = pokemon.id.toString();
-            nomePokemon.textContent = pokemon.nome;
-            imagem.src = pokemon.spriteUrl;
-            imgSpriteShiny.src = pokemon.spriteUrlShiny;
-            lblTipoDePokemonNormal.textContent = 'Normal';
-            lblTipoDePokemonShiny.textContent = 'Shiny';
-
-
-            const cardPokemon = document.createElement('div');
-            cardPokemon.classList.add('card-pokemon');
-
-            cardPokemon.appendChild(id);
-            cardPokemon.appendChild(imagem);
-            cardPokemon.appendChild(lblTipoDePokemonNormal);
-            cardPokemon.appendChild(nomePokemon);
-            cardPokemon.appendChild(lblTipoDePokemonShiny);
-            cardPokemon.appendChild(imgSpriteShiny);
-
-            return cardPokemon;
-        }
-
 }
 window.addEventListener('load', () => new PokemonDetalhes());

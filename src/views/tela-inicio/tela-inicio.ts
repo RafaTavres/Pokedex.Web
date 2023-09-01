@@ -82,14 +82,14 @@ class TelaInicio{
         }
 
         private obterCard(pokemon: Pokemon) {
-           const id = document.createElement("p");
+            const id = document.createElement("p");
             const imagem = document.createElement("img");
             const nomePokemon = document.createElement("p");
 
             const lblTipoDePokemonNormal = document.createElement("p");
 
             id.textContent = pokemon.id.toString();
-            nomePokemon.textContent = pokemon.nome;
+            nomePokemon.textContent = pokemon.nome.toUpperCase();
             imagem.src = pokemon.spriteUrl;
             lblTipoDePokemonNormal.textContent = 'Normal';
 

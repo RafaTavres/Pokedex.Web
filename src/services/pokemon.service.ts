@@ -16,7 +16,7 @@ export class PokemonService{
         return fetch(url)
         .then((res: Response): Promise<any> => this.processarResposta(res))
         .then((obj: any): Promise<Pokemon[]> => this.mapearListaPokemon(obj.results));
-   }
+    }
 
     private processarResposta(res: Response): Promise<any>{
         if(res.ok)
@@ -27,11 +27,14 @@ export class PokemonService{
     }
 
     private mapearPokemon(obj: any): Pokemon{
+
+       
         return {
             id: obj.id,
             nome:obj.name,
             spriteUrl: obj.sprites.front_default,
-            spriteUrlShiny: obj.sprites.front_shiny
+            spriteUrlShiny: obj.sprites.front_shiny,
+           
         };
     }
 

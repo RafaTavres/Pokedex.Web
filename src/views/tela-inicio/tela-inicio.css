@@ -3,6 +3,7 @@ body {
 
   font-weight: bold;
   background-color: #313131;
+  background-image: url("assets/fundo-hoen.jpg");
 
   margin: 0;
 }
@@ -17,13 +18,13 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: 700;
-  color: #f9f9f9;
+  color: #0a0808;
 }
 
 .descricao {
   font-size: 22px;
   font-weight: 600;
-  color: #f9f9f9;
+  color: #0a0808;
 }
 
 .container-formulario {
@@ -82,12 +83,30 @@ h1 {
 
   height: 350px;
 
-  background-color: #e1e1e1;
+  background-color: #e1e1e1e7;
   color: #313131;
-
   border-radius: 1rem;
-
+  border-width: 6px;
+  border-style: solid;
+  border-color:#000000;
+  
   margin-top: 5%;
+}
+
+.card-pokemon > p{
+  background-color: #e1e1e1c2;
+  color: #313131;
+  border-width: 1px;
+  border-style:solid;
+  border-color:#4d4b4d;
+
+}
+.card-pokemon > img{
+  background-color: #e1e1e1c2;
+  color: #313131;
+  border-width: 1px;
+  border-color:#f8f8f8;
+  border-style:solid;
 }
 
 .notificacao {
