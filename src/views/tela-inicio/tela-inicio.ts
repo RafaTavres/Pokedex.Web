@@ -59,7 +59,8 @@ class TelaInicio{
             notificacao.addEventListener('click', (sender: Event) =>{(sender.target as HTMLElement).remove()})
 
            
-
+            document.body.appendChild(notificacao);
+            
             setTimeout(() => {
                 notificacao.remove();
             }, 3000);
